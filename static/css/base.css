@@ -101,7 +101,7 @@ body {
 }
 
 
-/* Additional styles */
+/* Additional styles for the new elements */
 main {
   text-align: center;
 }
@@ -113,3 +113,17 @@ footer.footer {
   width: 100%;
 }
 
+/* To ensure the background image encapsulates the entire page */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
