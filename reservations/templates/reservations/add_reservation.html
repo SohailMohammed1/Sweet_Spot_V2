@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Reservation</title>
+</head>
+
+<body>
+    <h1>Add Reservation</h1>
+    <form method="POST" action="{% url 'add_reservation' %}">
+        {% csrf_token %}
+        <!-- Include form fields here -->
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required><br>
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" id="phone_number" name="phone_number" required><br>
+        <label for="no_of_guests">Number of Guests:</label>
+        <input type="number" id="no_of_guests" name="no_of_guests" required><br>
+        <label for="date_selected">Date:</label>
+        <input type="date" id="date_selected" name="date_selected" required><br>
+        <label for="time_selected">Time:</label>
+        <input type="time" id="time_selected" name="time_selected" required><br>
+        <label for="special_request">Special Request:</label>
+        <textarea id="special_request" name="special_request"></textarea><br>
+        <button type="submit">Submit Reservation</button>
+    </form>
+
+    <h2>Existing Reservations:</h2>
+    <ul>
+        {% for reservation in reservations %}
+            <li>{{ reservation.first_name }} {{ reservation.last_name }} - {{ reservation.date_selected }}</li>
+        {% empty %}
+            <li>No existing reservations</li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html> 

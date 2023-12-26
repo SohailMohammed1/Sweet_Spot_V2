@@ -20,5 +20,6 @@ from SweetSpot.views import get_sweetspot
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', get_sweetspot, name="get_sweetspot"), 
+    
 ]
 
