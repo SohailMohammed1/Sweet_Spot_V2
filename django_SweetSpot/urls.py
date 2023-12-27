@@ -21,8 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.get_sweetspot, name="homepage"), 
     path('add/', views.add_reservation, name='add_reservation'),
-    path('edit/<int:reservation_id>/', views.edit_reservation, name='edit_reservation'),
-    path('toggle/<int:reservation_id>/', views.toggle_reservation, name='toggle_reservation'),
-    path('delete/<int:reservation_id>/', views.delete_reservation, name='delete_reservation'),
 ]
 

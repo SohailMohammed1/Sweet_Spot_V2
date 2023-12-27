@@ -30,15 +30,5 @@
         <textarea id="special_request" name="special_request"></textarea><br>
         <button type="submit">Submit Reservation</button>
     </form>
-
-    <h2>Existing Reservations:</h2>
-    <ul>
-        {% for reservation in reservations %}
-            <li>{{ reservation.first_name }} {{ reservation.last_name }} - {{ reservation.date_selected }}</li>
-        {% empty %}
-            <li>No existing reservations</li>
-        {% endfor %}
-    </ul>
 </body>
-
-</html> 
+</html>
