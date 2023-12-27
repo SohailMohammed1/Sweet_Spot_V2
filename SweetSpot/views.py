@@ -12,7 +12,7 @@ def get_sweet_spot(request):
     context = {
         'reservations': reservations
     }
-    return render(request, 'sweet_spot/sweet_spot.html', context)
+    return render(request, 'SweetSpot/base.html', context)
 
 def add_reservation(request):
     if request.method == "POST":
@@ -43,7 +43,7 @@ def edit_reservation(request, reservation_id):
     context = {
         'form': form
     }
-    return render(request, 'sweet_spot/edit_reservation.html', context)
+    return render(request, 'SweetSpot/edit_reservation.html', context)
 
 def toggle_reservation(request, reservation_id):
     reservation = get_object_or_404(DinnerReservation, pk=reservation_id)

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinner Reservations</title>
+    <style>
+        .done {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Dinner Reservations</h1>
+    <ul>
+        {% for reservation in reservations %}
+        <li {% if reservation.status == 1 %}class="done"{% endif %}>
+            <strong>Name:</strong>
+            {% if reservation.status == 1 %}
+                <strike>{{ reservation.first_name }} {{ reservation.last_name }}</strike>
+            {% else %}
+                {{ reservation.first_name }} {{ reservation.last_name }}
+            {% endif %}
+            <br>
+            <strong>Email:</strong> {{ reservation.email }} <br>
+            <strong>Phone:</strong> {{ reservation.phone_number }} <br>
+            <strong>Number of Guests:</strong> {{ reservation.no_of_guests }} <br>
+            <strong>Date:</strong> {{ reservation.date_selected }} <br>
+            <strong>Time:</strong> {{ reservation.time_selected }} <br>
+            <strong>Special Request:</strong> {{ reservation.special_request }} <br>
+            <strong>Status:</strong> {{ reservation.get_status_display }} <br>
+            <a href="/edit/{{ reservation.id }}">Edit</a> 
+            
+            <a href="{% url 'toggle_reservation' reservation.id %}">
+                {% if reservation.status == 1 %}
+                    Untoggle
+                {% else %}
+                    Toggle
+                {% endif %}
+            </a>
+
+            <a href="{% url 'delete_reservation' reservation.id %}">Delete</a>
+            
+            <hr>
+
+        </li>
+        {% empty %}
+        <li>No reservations available.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_reservation' %}">Add a reservation</a>
+</body>
+
+</html>
