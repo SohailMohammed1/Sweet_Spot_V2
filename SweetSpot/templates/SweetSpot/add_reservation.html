@@ -11,7 +11,6 @@
     <h1>Add Reservation</h1>
     <form method="POST" action="{% url 'add_reservation' %}">
         {% csrf_token %}
-        <!-- Include form fields here -->
         <label for="first_name">First Name:</label>
         <input type="text" id="first_name" name="first_name" required><br>
         <label for="last_name">Last Name:</label>
@@ -28,7 +27,8 @@
         <input type="time" id="time_selected" name="time_selected" required><br>
         <label for="special_request">Special Request:</label>
         <textarea id="special_request" name="special_request"></textarea><br>
-        <button type="submit">Submit Reservation</button>
+        <a href="{% url 'sweet_spot' %}" class="btn">Submit Reservation</a>
     </form>
 </body>
 </html>
+
