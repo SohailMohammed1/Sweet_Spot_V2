@@ -28,7 +28,7 @@ def add_reservation(request):
         'form': form,
         'reservations': DinnerReservation.objects.all()
     }
-    return render(request, 'sweet_spot/add_reservation.html', context)
+    return render(request, 'SweetSpot/add_reservation.html', context)
 
 
 def edit_reservation(request, reservation_id):
