@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import DinnerReservation
 from .forms import ReservationForm
 from django.shortcuts import get_object_or_404
+from django.utils import timezone
 
 def get_sweetspot(request):
     return render(request, 'SweetSpot/base.html')
@@ -16,6 +17,7 @@ def get_sweet_spot(request):
 
 
 def add_reservation(request):
+    today = timezone.now().date()
     if request.method == "POST":
         form = ReservationForm(request.POST)
         if form.is_valid():
@@ -27,7 +29,8 @@ def add_reservation(request):
         form = ReservationForm()
     context = {
         'form': form,
-        'reservations': DinnerReservation.objects.all()
+        'reservations': DinnerReservation.objects.all(),
+        'today': today.strftime("%Y-%m-%d"),
     }
     return render(request, 'SweetSpot/add_reservation.html', context)
 

@@ -18,7 +18,7 @@ class DinnerReservation(models.Model):
     no_of_tables = models.IntegerField(default=0)
     date_selected = models.DateField()
     time_selected = models.TimeField()
-    special_request = models.TextField()
+    special_request = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS)
 
