@@ -27,3 +27,4 @@ urlpatterns = [
     path('delete/<int:reservation_id>/', views.delete_reservation, name='delete_reservation'),
 ]
 
+

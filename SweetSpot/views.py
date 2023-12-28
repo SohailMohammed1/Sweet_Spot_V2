@@ -3,12 +3,12 @@ from .models import DinnerReservation
 from .forms import ReservationForm
 from django.shortcuts import get_object_or_404
 
-# Create your views here.
 def get_sweetspot(request):
     return render(request, 'SweetSpot/base.html')
 
 def get_sweet_spot(request):
     reservations = DinnerReservation.objects.all().order_by('id')  
+    print(reservations)
     context = {
         'reservations': reservations
     }
@@ -22,7 +22,7 @@ def add_reservation(request):
             reservation = form.save(commit=False)
             reservation.status = 0  
             reservation.save()
-            return redirect('homepage')
+            return redirect('sweet_spot')
     else:
         form = ReservationForm()
     context = {

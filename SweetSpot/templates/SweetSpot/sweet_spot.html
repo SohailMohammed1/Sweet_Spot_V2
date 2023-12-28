@@ -32,18 +32,8 @@
             <strong>Special Request:</strong> {{ reservation.special_request }} <br>
             <strong>Status:</strong> {{ reservation.get_status_display }} <br>
             <a href="/edit/{{ reservation.id }}">Edit</a> 
-            
-            <a href="{% url 'toggle_reservation' reservation.id %}">
-                {% if reservation.status == 1 %}
-                    Untoggle
-                {% else %}
-                    Toggle
-                {% endif %}
-            </a>
 
             <a href="{% url 'delete_reservation' reservation.id %}">Delete</a>
-            
-            <hr>
 
         </li>
         {% empty %}
@@ -51,6 +41,7 @@
         {% endfor %}
     </ul>
     <a href="{% url 'add_reservation' %}">Add a reservation</a>
+    <a href="{% url 'homepage' %}">Homepage</a>
 </body>
 
 </html>
