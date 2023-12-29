@@ -48,12 +48,6 @@ def edit_reservation(request, reservation_id):
     }
     return render(request, 'SweetSpot/edit_reservation.html', context)
 
-def toggle_reservation(request, reservation_id):
-    reservation = get_object_or_404(DinnerReservation, pk=reservation_id)
-    reservation.status = not reservation.status
-    reservation.save()
-    return redirect('sweet_spot')
-
 def delete_reservation(request, reservation_id):
     reservation = get_object_or_404(DinnerReservation, pk=reservation_id)
     reservation.delete()

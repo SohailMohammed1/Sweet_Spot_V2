@@ -21,6 +21,7 @@ class DinnerReservation(models.Model):
     special_request = models.TextField(blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS)
+    done = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-created_on']
