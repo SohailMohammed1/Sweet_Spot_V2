@@ -23,7 +23,7 @@ class TestReservationForm(TestCase):
         self.assertIn('email', form.errors.keys())
         self.assertEqual(form.errors['email'][0], 'This field is required.')
 
-    def test_field_email_is_required(self):
+    def test_field_phone_number_is_required(self):
         form = ReservationForm({'phone_number':''})
         self.assertFalse(form.is_valid())
         self.assertIn('phone_number', form.errors.keys())

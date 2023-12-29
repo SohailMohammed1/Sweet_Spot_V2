@@ -23,6 +23,9 @@ class DinnerReservation(models.Model):
     status = models.IntegerField(choices=STATUS)
     done = models.BooleanField(default=False)
 
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+
     class Meta:
         ordering = ['-created_on']
 
