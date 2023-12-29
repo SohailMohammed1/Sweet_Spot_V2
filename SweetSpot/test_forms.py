@@ -1,36 +1,53 @@
-from django.test import TestCase
+from django.test import TestCase, Client
+from .models import DinnerReservation
+from django.urls import reverse
+from django.utils import timezone
 from .forms import ReservationForm
 
-class ReservationFormTest(TestCase):
+class TestReservationForm(TestCase):
+    def test_field_first_name_is_required(self):
+        form = ReservationForm({'first_name':''})
+        self.assertFalse(form.is_valid())
+        self.assertIn('first_name', form.errors.keys())
+        self.assertEqual(form.errors['first_name'][0], 'This field is required.') 
 
-    # Special requirements
-    def with_special_request(self):
-        form_data = {
-            'first_name': 'John',
-            'last_name': 'Smith',
-            'email': 'john@example.com',
-            'phone_number': '1234567890',
-            'no_of_guests': 2,
-            'date_selected': '2023-12-28',
-            'time_selected': '19:00',
-            'special_request': 'A table by the window, please.',
-        }
-        form = ReservationForm(data=form_data)
-        self.assertTrue(form.is_valid())
+    def test_field_last_name_is_required(self):
+        form = ReservationForm({'last_name':''})
+        self.assertFalse(form.is_valid())
+        self.assertIn('last_name', form.errors.keys())
+        self.assertEqual(form.errors['last_name'][0], 'This field is required.') 
 
+    def test_field_email_is_required(self):
+        form = ReservationForm({'email':''})
+        self.assertFalse(form.is_valid())
+        self.assertIn('email', form.errors.keys())
+        self.assertEqual(form.errors['email'][0], 'This field is required.')
 
-    # No special requirement
-    def without_special_request(self):
-        form_data = {
-            'first_name': 'John',
-            'last_name': 'Smith',
-            'email': 'john@example.com',
-            'phone_number': '0987654321',
-            'no_of_guests': 4,
-            'date_selected': '2023-12-27',
-            'time_selected': '20:00',
+    def test_field_email_is_required(self):
+        form = ReservationForm({'phone_number':''})
+        self.assertFalse(form.is_valid())
+        self.assertIn('phone_number', form.errors.keys())
+        self.assertEqual(form.errors['phone_number'][0], 'This field is required.')
 
-        }
-        form = ReservationForm(data=form_data)
-        self.assertTrue(form.is_valid())
+    def test_field_number_of_guests_is_required(self):
+        form = ReservationForm({'no_of_guests':''})
+        self.assertFalse(form.is_valid())
+        self.assertIn('no_of_guests', form.errors.keys())
+        self.assertEqual(form.errors['no_of_guests'][0], 'This field is required.')
 
+    def test_field_date_is_required(self):
+        form = ReservationForm({'date_selected':''})
+        self.assertFalse(form.is_valid())
+        self.assertIn('date_selected', form.errors.keys())
+        self.assertEqual(form.errors['date_selected'][0], 'This field is required.')
+
+    def test_field_time_is_required(self):
+        form = ReservationForm({'time_selected':''})
+        self.assertFalse(form.is_valid())
+        self.assertIn('time_selected', form.errors.keys())
+        self.assertEqual(form.errors['time_selected'][0], 'This field is required.')
+
+    def test_fields_are_explicit_in_form_metaclass(self):
+        form = ReservationForm()
+        self.assertEqual(form.Meta.fields, ['first_name', 'last_name', 'email', 'phone_number', 'no_of_guests', 
+            'date_selected', 'time_selected', 'special_request'])
