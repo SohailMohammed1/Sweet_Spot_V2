@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'SweetSpot', 
     'django_summernote',
+    'accounts', 
 ]
 
 MIDDLEWARE = [

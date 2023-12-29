@@ -16,6 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from SweetSpot import views
+from accounts import views as account_views
+from django.contrib.auth import views as auth_views
+from django.contrib.auth import views as user_views
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,6 +29,9 @@ urlpatterns = [
     path('sweet_spot/', views.get_sweet_spot, name='sweet_spot'), 
     path('edit/<int:reservation_id>/', views.edit_reservation, name='edit_reservation'),
     path('delete/<int:reservation_id>/', views.delete_reservation, name='delete_reservation'),
+    path('login/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
+    path('signup/', account_views.signup, name='signup'),
 ]
 
 
