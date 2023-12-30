@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from cloudinary.models import CloudinaryField
+from django.contrib.auth.models import User
 
 STATUS = ((0, "draft"), (1, "Published"))
 
@@ -9,6 +10,7 @@ class sweetspotmodel(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
 
 class DinnerReservation(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=255, unique=True, null=True)
