@@ -19,6 +19,7 @@ from SweetSpot import views
 from accounts import views as account_views
 from django.contrib.auth import views as auth_views
 from django.contrib.auth import views as user_views
+from desserts import views as desserts_views
 
 
 
@@ -34,6 +35,10 @@ urlpatterns = [
     path('signup/', account_views.signup, name='signup'),
     path('profile/', account_views.profile, name='profile'),
     path('account-options/', account_views.account_options, name='account_options'),
+    path('list/', desserts_views.list_desserts, name='list_desserts'),
+    path('add_dessert/', desserts_views.add_dessert, name='add_dessert'),
+    path('edit_dessert/<int:pk>/', desserts_views.edit_dessert, name='edit_dessert'),
+    path('delete_dessert/<int:pk>/', desserts_views.delete_dessert, name='delete_dessert'),
 
 ]
 

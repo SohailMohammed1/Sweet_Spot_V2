@@ -1,0 +1,18 @@
+{% block content %}
+  <h1>Dessert Recipes</h1>
+  <ul>
+    {% for dessert in desserts %}
+      <li>
+        <h2>{{ dessert.name }}</h2>
+        <p>{{ dessert.description }}</p>
+        <p><b>Ingredients:</b> {{ dessert.ingredients }}</p>
+        <p><b>Instructions:</b> {{ dessert.instructions }}</p>
+      </li>
+    {% empty %}
+      <li>No desserts available.</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'add_dessert' %}">Create your own Dessert!</a>
+{% endblock %}
+
+
