@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'SweetSpot', 
     'django_summernote',
     'accounts', 
+    'desserts', 
 ]
 
 MIDDLEWARE = [
