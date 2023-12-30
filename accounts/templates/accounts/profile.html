@@ -1,28 +1,29 @@
-{% block content %}
-  <div class="profile-container">
-    <h1>{{ user.username }}'s Profile</h1>
-    <p>Welcome to your profile page.</p>
-    
-    <a href="{% url 'sweet_spot' %}" class="btn btn-primary">View Reservations</a>
+{% extends "SweetSpot/base.html" %}
 
-    <a href="{% url 'add_reservation' %}" class="btn btn-secondary">Create a Reservation</a>
+{% block title %}Profile{% endblock %}
 
-    <a href="{% url 'logout' %}" class="btn btn-danger">Log Out</a>
+{% block main_content %}
+<div class="form-container">
+  <h1>{{ user.username }}'s Profile</h1>
+  <p>Welcome to your profile page.</p>
+  
+  <a href="{% url 'sweet_spot' %}" class="btn-primary">View Reservations</a>
+  <a href="{% url 'add_reservation' %}" class="btn-secondary">Create a Reservation</a>
+  <a href="{% url 'logout' %}" class="btn-secondary">Log Out</a>
 
-    <h2>Your Recipes</h2>
-    <ul>
-      {% for dessert in user.dessert_set.all %}
-        <li>
-          {{ dessert.name }} - 
-          <a href="{% url 'edit_dessert' dessert.id %}">Edit</a> | 
-          <a href="{% url 'delete_dessert' dessert.id %}">Delete</a>
-        </li>
-      {% empty %}
-        <li>You have not submitted any recipes.</li>
-      {% endfor %}
-    </ul>
-    
-    <a href="{% url 'add_dessert' %}" class="btn btn-primary">Add New Recipe</a>
-  </div>
+  <h2>Your Recipes</h2>
+  <ul>
+    {% for dessert in user.dessert_set.all %}
+      <li>
+        {{ dessert.name }} - 
+        <a href="{% url 'edit_dessert' dessert.id %}" class="btn-primary">Edit</a> 
+        <a href="{% url 'delete_dessert' dessert.id %}" class="btn-secondary">Delete</a>
+      </li>
+    {% empty %}
+      <li>You have not submitted any recipes.</li>
+    {% endfor %}
+  </ul>
+  
+  <a href="{% url 'add_dessert' %}" class="btn-primary">Add New Recipe</a>
+</div>
 {% endblock %}
-

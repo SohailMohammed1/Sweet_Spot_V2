@@ -160,7 +160,70 @@ body {
   opacity: 0.9;
 }
 
+#login-form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
 
+#login-form-container h2 {
+  margin-bottom: 20px;
+}
+
+#login-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+#login-form-container input[type="text"],
+#login-form-container input[type="password"] {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: calc(100% - 22px); /* Adjust width based on padding and border */
+}
+
+/* Style all buttons inside the #login-form-container */
+#login-form-container .btn {
+  display: block; /* Make buttons block level so they fill the container */
+  width: 90%; /* Adjust width as needed */
+  margin: 10px auto; /* Centers the button with top and bottom margin */
+  padding: 12px; /* Button padding */
+  font-size: 1em; /* Text size inside button */
+  font-weight: bold; /* Text weight */
+  border-radius: 5px; /* Rounded corners for buttons */
+  border: none; /* Remove border */
+  cursor: pointer; /* Cursor indicates a link */
+}
+
+#login-form-container .btn-primary {
+  background-color: #28a745; /* Green color */
+}
+
+#login-form-container .btn-success {
+  background-color: #007bff; /* Blue color */
+  color: white; 
+}
+
+#login-form-container .btn-secondary {
+  background-color: #dc3545; /* Red color */
+}
+
+/* Adjust hover effect */
+#login-form-container .btn:hover {
+  opacity: 0.85;
+}
+
+
+/* Hover effect for all buttons inside #login-form-container */
+#login-form-container .btn:hover {
+  opacity: 0.85;
+}
 
 
 
@@ -174,6 +237,20 @@ footer.footer {
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+
+.account-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Use the full height of the viewport */
+}
+
+.account-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Adds space between buttons */
 }
 
 /* To ensure the background image encapsulates the entire page */
