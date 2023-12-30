@@ -1,14 +1,13 @@
 {% block content %}
   <div class="login-container">
     <h2>Login</h2>
-    <form method="post" class="login-form">
+    <form method="post" action="{% url 'login' %}">
       {% csrf_token %}
       {{ form.as_p }}
+      <input type="hidden" name="next" value="{% url 'homepage' %}">
       <button type="submit" class="btn btn-primary">Log in</button>
-      <!-- Sign Up button redirects to the sign-up page -->
-      <a href="{% url 'signup' %}" class="btn btn-secondary">Sign Up</a>
-      <!-- Cancel button redirects to the homepage -->
-      <a href="{% url 'homepage' %}" class="btn btn-danger">Cancel</a>
+      <a href="{% url 'signup' %}" class="btn btn-success">Sign Up</a>
     </form>
+    <a href="{% url 'homepage' %}" class="btn btn-secondary">Cancel</a>
   </div>
 {% endblock %}
