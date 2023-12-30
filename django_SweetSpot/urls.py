@@ -21,25 +21,30 @@ from django.contrib.auth import views as auth_views
 from django.contrib.auth import views as user_views
 from desserts import views as desserts_views
 
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.get_sweetspot, name="homepage"), 
+    path('', views.get_sweetspot, name="homepage"),
     path('add/', views.add_reservation, name='add_reservation'),
-    path('sweet_spot/', views.get_sweet_spot, name='sweet_spot'), 
-    path('edit/<int:reservation_id>/', views.edit_reservation, name='edit_reservation'),
-    path('delete/<int:reservation_id>/', views.delete_reservation, name='delete_reservation'),
-    path('login/', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
-    path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
+    path('sweet_spot/', views.get_sweet_spot, name='sweet_spot'),
+    path('edit/<int:reservation_id>/',
+         views.edit_reservation, name='edit_reservation'),
+    path('delete/<int:reservation_id>/',
+         views.delete_reservation, name='delete_reservation'),
+    path('login/',
+         auth_views.LoginView.as_view(template_name='accounts/login.html'),
+         name='login'),
+    path('logout/',
+         auth_views.LogoutView.as_view(next_page='login'),
+         name='logout'),
     path('signup/', account_views.signup, name='signup'),
     path('profile/', account_views.profile, name='profile'),
-    path('account-options/', account_views.account_options, name='account_options'),
+    path('account-options/',
+         account_views.account_options, name='account_options'),
     path('list/', desserts_views.list_desserts, name='list_desserts'),
     path('add_dessert/', desserts_views.add_dessert, name='add_dessert'),
-    path('edit_dessert/<int:pk>/', desserts_views.edit_dessert, name='edit_dessert'),
-    path('delete_dessert/<int:pk>/', desserts_views.delete_dessert, name='delete_dessert'),
+    path('edit_dessert/<int:pk>/',
+         desserts_views.edit_dessert, name='edit_dessert'),
+    path('delete_dessert/<int:pk>/',
+         desserts_views.delete_dessert, name='delete_dessert'),
 
 ]
-
-

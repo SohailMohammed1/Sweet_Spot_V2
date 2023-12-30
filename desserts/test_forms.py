@@ -3,18 +3,24 @@ from .forms import DessertForm
 from .models import Dessert
 from django.contrib.auth.models import User
 
+
 class DessertFormTest(TestCase):
-    
     @classmethod
     def setUpTestData(cls):
-        cls.user = User.objects.create_user(username='testuser', password='testpassword')
-        
+        cls.user = User.objects.create_user(
+            username='testuser',
+            password='testpassword'
+            )
+
     def test_dessert_form_fields(self):
         form = DessertForm()
-        self.assertEqual(set(form.fields), set(['name', 'description', 'ingredients', 'instructions']))
+        self.assertEqual(set(form.fields), set(
+            ['name',
+                'description',
+                'ingredients',
+                'instructions']))
 
     def test_dessert_form_valid_data(self):
-
         form_data = {
             'name': 'Chocolate Cake',
             'description': 'Rich chocolate sponge',
@@ -23,10 +29,8 @@ class DessertFormTest(TestCase):
         }
         form = DessertForm(data=form_data)
         self.assertTrue(form.is_valid())
-
-
         dessert = form.save(commit=False)
-        dessert.user = self.user  
+        dessert.user = self.user
         dessert.save()
         self.assertEqual(Dessert.objects.count(), 1)
         self.assertEqual(Dessert.objects.first().name, 'Chocolate Cake')
@@ -51,5 +55,3 @@ class DessertFormTest(TestCase):
         form = DessertForm(data=form_data)
         self.assertFalse(form.is_valid())
         self.assertIn('description', form.errors)
-
-

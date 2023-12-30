@@ -5,10 +5,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 from SweetSpot.models import DinnerReservation
 
+
 class AccountViewsTests(TestCase):
 
     def setUp(self):
-        self.user = get_user_model().objects.create_user(username='testuser', password='testpass123')
+        self.user = get_user_model().objects.create_user(
+            username='testuser',
+            password='testpass123')
         self.user.save()
 
     def test_signup_view_POST_valid(self):
@@ -48,8 +51,10 @@ class AccountViewsTests(TestCase):
         response = self.client.get(reverse('sweet_spot'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'SweetSpot/sweet_spot.html')
-        self.assertEqual(len(response.context['reservations']), DinnerReservation.objects.filter(user=self.user).count())
+        self.assertEqual(len(
+            response.context['reservations']),
+            DinnerReservation.objects.filter(
+            ser=self.user).count())
 
     def tearDown(self):
         self.user.delete()
-
