@@ -28,7 +28,7 @@ def add_reservation(request):
     else:
         form = ReservationForm()
     context = {
-        'form': form,
+        'form': form, 
         'reservations': DinnerReservation.objects.all(),
         'today': today.strftime("%Y-%m-%d"),
     }
@@ -44,7 +44,8 @@ def edit_reservation(request, reservation_id):
     else:
         form = ReservationForm(instance=reservation)
     context = {
-        'form': form
+        'form': form, 
+        'reservation': reservation,
     }
     return render(request, 'SweetSpot/edit_reservation.html', context)
 

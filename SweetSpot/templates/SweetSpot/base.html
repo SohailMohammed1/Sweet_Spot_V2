@@ -1,49 +1,49 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-  <head>
-    
-    {% block meta %}
-      <meta http-equiv="X-UA-Compatible" content="ie=edge">
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    {% endblock %}
+<head>
+  
+  {% block meta %}
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% endblock meta %}
 
-    {% block extra_meta %}
-    {% endblock %}
-    
-    {% block corecss %}
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-      <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
-      <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    {% endblock %}
+  {% block extra_meta %}
+  {% endblock extra_meta %}
+  
+  {% block corecss %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  {% endblock corecss %}
 
-    {% block extra_css %}
-    {% endblock %}
+  {% block extra_css %}
+  {% endblock extra_css %}
 
-    {% block js_query %}
-    {% endblock %}
-    
-    {% block extra_js %}
-    {% endblock %}
+  {% block js_query %}
+  {% endblock js_query %}
+  
+  {% block extra_js %}
+  {% endblock extra_js %}
 
-  </head>
+</head>
 
-  <body>
-
+<body>
+  {% block navbar %}
     <div class="header">
-      <div class="logo-placeholder logo" a href="sweetspot.html">Sweet Spot</div>
+      <div class="logo-placeholder logo" a href="{% url 'homepage' %}">Sweet Spot</div>
       <ul class="nav">
         <li>
           <a href="{% url 'homepage' %}" class="btn btn-secondary btn-font">Home</a>
         </li>
         <li>
-          <a href="{% url 'list_desserts' %}" class="btn btn-secondary btn-font">Browse Menu</a>
+          <a href="{% url 'list_desserts' %}" class="btn btn-secondary btn-font">Recipes</a>
         </li>
         <li>
           {% if user.is_authenticated %}
-            <a href="{% url 'add_reservation' %}" class="btn btn-secondary btn-font">Book Table</a>
+            <a href="{% url 'add_reservation' %}" class="btn btn-secondary btn-font">Reservations</a>
           {% else %}
             <a href="{% url 'login' %}?next={% url 'add_reservation' %}" class="btn btn-secondary btn-font">Book Table</a>
           {% endif %}
@@ -54,15 +54,16 @@
         </li>
       </ul>
     </div>
+  {% endblock navbar %}
 
+  {% block main_content %}
     <main class="text-center my-5">
       <h1 class ="main-heading">The Sweet Spot</h1>
       <div>
-        <button class="btn btn-primary" type="submit">Menu</button>
-        <a href="{% url 'add_reservation' %}" class="btn btn-secondary btn-font">Book a Table</a>
-
+        <a href="{% url 'add_reservation' %}" class="btn btn-secondary btn-font">Create a Reservation</a>
       </div>
     </main>
+  {% endblock main_content %}
 
-  </body>
+</body>
 </html>

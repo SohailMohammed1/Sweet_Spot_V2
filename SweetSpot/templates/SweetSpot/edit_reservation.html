@@ -1,19 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "SweetSpot/base.html" %}
+{% block title %}Edit Reservation{% endblock title %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Reservation</title>
-</head>
-
-<body>
+{% block main_content %}
+<div class="form-container">
     <h1>Edit Reservation</h1>
-    <form method="POST">
+    <form method="POST" action="{% url 'edit_reservation' reservation.id %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Update Reservation</button>
+        <button type="submit" class="btn btn-primary">Update Reservation</button>
     </form>
-</body>
-
-</html>
+</div>
+{% endblock main_content %}

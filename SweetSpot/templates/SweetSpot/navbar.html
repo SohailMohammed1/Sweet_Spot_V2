@@ -1,0 +1,24 @@
+<!-- templates/_navbar.html -->
+<div class="header">
+    <div class="logo-placeholder logo" a href="{% url 'homepage' %}">Sweet Spot</div>
+    <ul class="nav">
+      <li>
+        <a href="{% url 'homepage' %}" class="btn btn-secondary btn-font">Home</a>
+      </li>
+      <li>
+        <a href="{% url 'list_desserts' %}" class="btn btn-secondary btn-font">Browse Recipes</a>
+      </li>
+      <li>
+        {% if user.is_authenticated %}
+          <a href="{% url 'add_reservation' %}" class="btn btn-secondary btn-font">Reservations</a>
+        {% else %}
+          <a href="{% url 'login' %}?next={% url 'add_reservation' %}" class="btn btn-secondary btn-font">Book Table</a>
+        {% endif %}
+      </li>
+      
+      <li>
+        <a href= "{% url 'account_options' %}" class="btn btn-secondary btn-font">Account</a>
+      </li>
+    </ul>
+  </div>
+  

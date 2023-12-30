@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "SweetSpot/base.html" %}
+{% load static %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Reservation</title>
-</head>
+{% block title %}
+Add Reservation
+{% endblock title %}
 
-<body>
+{% block main_content %}
+<div class="form-container">
     <h1>Add Reservation</h1>
     <form method="POST" action="{% url 'add_reservation' %}">
         {% csrf_token %}
@@ -35,10 +34,10 @@
         <label for="special_request">Special Request:</label>
         <textarea id="special_request" name="special_request"></textarea><br>
     
-        <button type="submit">Submit Reservation</button>
-        <a href="{% url 'homepage' %}" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-primary">Submit Reservation</button>
+        <a href="{% url 'homepage' %}" class="btn btn-secondary cancel-button">Cancel</a>
     </form>
-    
-</body>
-</html>
+</div>
+{% endblock main_content %}
+
 
