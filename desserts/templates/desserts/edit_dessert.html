@@ -1,8 +1,15 @@
-{% block content %}
-  <h1>Edit Dessert</h1>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update Dessert</button>
-  </form>
+{% extends "SweetSpot/base.html" %}
+
+{% block title %}Edit Dessert{% endblock %}
+
+{% block main_content %} 
+  <div class="form-container">
+    <h1>Edit Dessert</h1>
+    <form method="post" class="dessert-form">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit" class="btn btn-primary">Update Dessert</button>
+      <a href="{% url 'homepage' %}" class="btn cancel-button">Cancel</a>
+    </form>
+  </div>
 {% endblock %}

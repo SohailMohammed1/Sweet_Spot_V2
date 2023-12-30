@@ -1,29 +1,28 @@
-{% block content %}
-  <h1>Dessert Recipes</h1>
-  <ul>
-    {% for dessert in desserts %}
-      <li>
-        <h2>{{ dessert.name }}</h2>
-        <p>{{ dessert.description }}</p>
-        <p>Submitted by {{ dessert.user.username }}</p>
-        <p><b>Ingredients:</b> {{ dessert.ingredients }}</p>
-        <p><b>Instructions:</b> {{ dessert.instructions }}</p>
-        {% if user.is_authenticated and dessert.user == user %}
-          <a href="{% url 'edit_dessert' dessert.id %}">Edit</a> |
-          <a href="{% url 'delete_dessert' dessert.id %}">Delete</a>
-        {% endif %}
-      </li>
-    {% empty %}
-      <li>No desserts available.</li>
-    {% endfor %}
-  </ul>
-  {% if user.is_authenticated %}
-    <a href="{% url 'add_dessert' %}" class="btn btn-primary">Add New Recipe</a>
-  {% else %}
-    <p>Please <a href="{% url 'login' %}">log in</a> to add a recipe.</p>
-  {% endif %}
-  <a href="{% url 'homepage' %}">Cancel</a>
-{% endblock %}
+{% extends "SweetSpot/base.html" %}
 
-
-
+{% block main_content %}
+<div class="form-container">
+    <h1>Dessert Recipes</h1>
+    <ul>
+        {% for dessert in desserts %}
+        <li>
+            <strong>Name:</strong> {{ dessert.name }}<br>
+            <strong>Description:</strong> {{ dessert.description }}<br>
+            <strong>Ingredients:</strong> {{ dessert.ingredients }}<br>
+            <strong>Instructions:</strong> {{ dessert.instructions }}<br>
+            <strong>Submitted by:</strong> {{ dessert.user.username }}<br>
+            {% if user.is_authenticated and dessert.user == user %}
+                <a href="{% url 'edit_dessert' dessert.id %}" class="btn-primary">Edit</a>
+                <a href="{% url 'delete_dessert' dessert.id %}" class="btn-secondary">Delete</a>
+            {% endif %}
+        </li>
+        {% empty %}
+        <li>No dessert recipes available.</li>
+        {% endfor %}
+    </ul>
+    {% if user.is_authenticated %}
+        <a href="{% url 'add_dessert' %}" class="btn btn-primary">Add New Recipe</a>
+    {% endif %}
+    <a href="{% url 'homepage' %}" class="btn btn-secondary">Homepage</a>
+</div>
+{% endblock main_content %}

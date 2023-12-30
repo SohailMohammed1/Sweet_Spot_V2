@@ -1,20 +1,36 @@
-{% block content %}
-<h1>Add Dessert Recipe</h1>
-<form method="POST" action="{% url 'add_dessert' %}">
-    {% csrf_token %}
-    <label for="name">Dessert Name:</label>
-    <input type="text" id="name" name="name" required><br>
+{% extends "SweetSpot/base.html" %}
 
-    <label for="description">Description:</label>
-    <textarea id="description" name="description"></textarea><br>
+{% block title %}Add Dessert Recipe{% endblock %}
 
-    <label for="ingredients">Ingredients:</label>
-    <textarea id="ingredients" name="ingredients" required></textarea><br>
+{% block main_content %}
+<div class="form-container">
+    <h1>Add Dessert Recipe</h1>
+    <form method="POST" action="{% url 'add_dessert' %}" class="form-style">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">Dessert Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
 
-    <label for="instructions">Instructions:</label>
-    <textarea id="instructions" name="instructions" required></textarea><br>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <textarea id="description" name="description"></textarea>
+        </div>
 
-    <button type="submit">Submit Recipe</button>
-    <a href="{% url 'homepage' %}" class="btn btn-secondary">Cancel</a>
-</form>
-{% endblock %}
+        <div class="form-group">
+            <label for="ingredients">Ingredients:</label>
+            <textarea id="ingredients" name="ingredients" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="instructions">Instructions:</label>
+            <textarea id="instructions" name="instructions" required></textarea>
+        </div>
+
+        <div class="form-group action-buttons">
+            <button type="submit" class="btn btn-primary">Submit Recipe</button>
+            <a href="{% url 'homepage' %}" class="cancel-button">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock main_content %}
