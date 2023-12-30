@@ -8,6 +8,21 @@
     <a href="{% url 'add_reservation' %}" class="btn btn-secondary">Create a Reservation</a>
 
     <a href="{% url 'logout' %}" class="btn btn-danger">Log Out</a>
+
+    <h2>Your Recipes</h2>
+    <ul>
+      {% for dessert in user.dessert_set.all %}
+        <li>
+          {{ dessert.name }} - 
+          <a href="{% url 'edit_dessert' dessert.id %}">Edit</a> | 
+          <a href="{% url 'delete_dessert' dessert.id %}">Delete</a>
+        </li>
+      {% empty %}
+        <li>You have not submitted any recipes.</li>
+      {% endfor %}
+    </ul>
+    
+    <a href="{% url 'add_dessert' %}" class="btn btn-primary">Add New Recipe</a>
   </div>
 {% endblock %}
 

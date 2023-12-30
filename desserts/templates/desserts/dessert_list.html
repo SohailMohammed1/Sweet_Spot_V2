@@ -5,13 +5,23 @@
       <li>
         <h2>{{ dessert.name }}</h2>
         <p>{{ dessert.description }}</p>
+        <p>Submitted by {{ dessert.user.username }}</p>
         <p><b>Ingredients:</b> {{ dessert.ingredients }}</p>
         <p><b>Instructions:</b> {{ dessert.instructions }}</p>
+        {% if user.is_authenticated and dessert.user == user %}
+          <a href="{% url 'edit_dessert' dessert.id %}">Edit</a> |
+          <a href="{% url 'delete_dessert' dessert.id %}">Delete</a>
+        {% endif %}
       </li>
     {% empty %}
       <li>No desserts available.</li>
     {% endfor %}
   </ul>
+  {% if user.is_authenticated %}
+    <a href="{% url 'add_dessert' %}" class="btn btn-primary">Add New Recipe</a>
+  {% else %}
+    <p>Please <a href="{% url 'login' %}">log in</a> to add a recipe.</p>
+  {% endif %}
   <a href="{% url 'add_dessert' %}">Create your own Dessert!</a>
 {% endblock %}
 
