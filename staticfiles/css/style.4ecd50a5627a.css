@@ -1,0 +1,269 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: black;
+}
+
+.main-heading {
+  font-family: 'Pacifico', cursive;
+  color: #923839;
+  margin-top: 150px;
+}
+
+.logo {
+  font-family: 'Pacifico', cursive;
+  color:#ddd; 
+  margin-left: 25px; 
+  font-size: 2vw;
+}
+
+.my-5 {
+  background-image: url("/static/media/dessert2.0114c9622e96.jpg"); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-size: 2.5vw; 
+}
+
+.nav {
+  background-color: black;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  color: white;
+  font-size: 1.5vw; 
+}
+
+.nav li {
+  padding: 10px;
+  background-color: #ddd;
+  margin-right: 2px;
+  background-color: black;
+}
+
+.nav li:last-child {
+  margin-right: 0;
+}
+
+.btn-font { 
+  font-family: 'Lato', sans-serif;
+}
+
+
+.btn {
+  padding: 10px 20px; 
+  grid-gap: 20px; 
+  font-size: 16px; 
+  font-family: 'Lato', sans-serif; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  background-color: #f2f2f2; 
+  color: #333; 
+  text-transform: uppercase; 
+  cursor: pointer; 
+  transition: background-color 0.3s, color 0.3s; 
+}
+
+
+.btn:hover {
+  background-color: #e1e1e1; 
+  color: #000; 
+}
+
+
+.btn-primary {
+  background-color: black; 
+  color: white; 
+  border-color: black; 
+}
+
+.btn-primary:hover {
+  background-color: #545b62; 
+  border-color: #545b62; 
+}
+
+.btn-secondary {
+  background-color: black; 
+  color: white; 
+  border-color: black; 
+}
+
+.btn-secondary:hover {
+  background-color: #545b62; 
+  border-color: #545b62; 
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container label {
+  margin-bottom: 5px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="tel"],
+.form-container input[type="number"],
+.form-container input[type="date"],
+.form-container input[type="time"],
+.form-container textarea {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.form-container button[type="submit"],
+.form-container a.cancel-button {
+  padding: 10px 15px;
+  color: white;
+  background-color: #5cb85c;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.form-container a.cancel-button {
+  background-color: #e41d1d; 
+  text-decoration: none; 
+  display: inline-block; 
+  text-align: center;
+}
+
+.form-container button[type="submit"]:hover,
+.form-container a.cancel-button:hover {
+  opacity: 0.9;
+}
+
+#login-form-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+#login-form-container h2 {
+  margin-bottom: 20px;
+}
+
+#login-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+#login-form-container input[type="text"],
+#login-form-container input[type="password"] {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: calc(100% - 22px); /* Adjust width based on padding and border */
+}
+
+/* Style all buttons inside the #login-form-container */
+#login-form-container .btn {
+  display: block; /* Make buttons block level so they fill the container */
+  width: 90%; /* Adjust width as needed */
+  margin: 10px auto; /* Centers the button with top and bottom margin */
+  padding: 12px; /* Button padding */
+  font-size: 1em; /* Text size inside button */
+  font-weight: bold; /* Text weight */
+  border-radius: 5px; /* Rounded corners for buttons */
+  border: none; /* Remove border */
+  cursor: pointer; /* Cursor indicates a link */
+}
+
+#login-form-container .btn-primary {
+  background-color: #28a745; /* Green color */
+}
+
+#login-form-container .btn-success {
+  background-color: #007bff; /* Blue color */
+  color: white; 
+}
+
+#login-form-container .btn-secondary {
+  background-color: #dc3545; /* Red color */
+}
+
+/* Adjust hover effect */
+#login-form-container .btn:hover {
+  opacity: 0.85;
+}
+
+
+/* Hover effect for all buttons inside #login-form-container */
+#login-form-container .btn:hover {
+  opacity: 0.85;
+}
+
+
+
+/* Additional styles for the new elements */
+main {
+  text-align: center;
+}
+
+footer.footer {
+  background-color: #f8f9fa;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.account-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Use the full height of the viewport */
+}
+
+.account-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Adds space between buttons */
+}
+
+/* To ensure the background image encapsulates the entire page */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
