@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-q8)o=cs-gujy%6@$r*imt$chtyu^vn)8pi$-_mrpm_ntb$985_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['sohailm1-django-sweetspot-app.herokuapp.com']
+ALLOWED_HOSTS = ['sohailm1-django-sweetspot-app-f241a1c4a62e.herokuapp.com']
 
 
 # Application definition
